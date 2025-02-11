@@ -1,15 +1,15 @@
-import elasticClient from "../db/db";
+import openSearchClient from "../db/db.js";
 
 export const helloWord = async () => {
   try {
-    const res = await elasticClient.search({
+    const res = await openSearchClient.search({
       index: "books",
       from: 0,
       query: {
         match_all: {},
       },
     });
-    return res.hits.hits.map((hit) => hit._source);
+    return res.body.hits.hits.map((hit) => hit._source);
   } catch (error) {
     console.log(error);
   }
@@ -17,10 +17,10 @@ export const helloWord = async () => {
 
 export const getEntityCount = async () => {
   try {
-    const res = await elasticClient.count({
+    const res = await openSearchClient.count({
       index: "books",
     });
-    return res.count;
+    return res.body.count;
   } catch (error) {
     console.log(error);
   }

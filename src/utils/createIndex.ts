@@ -1,16 +1,17 @@
-import elasticClient from "../db/db";
+import openSearchClient from "../db/db";
 
 export async function createIndex() {
   const indexName = "books";
 
   try {
-    const exists = await elasticClient.indices.exists({ index: indexName });
-    if (exists) {
+    const exists = await openSearchClient.indices.exists({ index: indexName });
+
+    if (exists.body) {
       console.log(`Index "${indexName}" already exists.`);
       return;
     }
 
-    await elasticClient.indices.create({
+    await openSearchClient.indices.create({
       index: indexName,
       body: {
         settings: {
@@ -33,6 +34,7 @@ export async function createIndex() {
           },
           index: {
             max_ngram_diff: 10,
+            max_result_window: 50000,
           },
         },
         mappings: {

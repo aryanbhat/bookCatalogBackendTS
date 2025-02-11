@@ -1,6 +1,7 @@
-import { Client } from "@elastic/elasticsearch";
+import { Client } from "@opensearch-project/opensearch";
+
 const elasticClient = new Client({
-    node: "http://localhost:9200",
+    node: "https://localhost:9200",
 });
 // Make the function exportable
 export const testConnection = async () => {

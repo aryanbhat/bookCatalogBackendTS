@@ -28,6 +28,9 @@ export async function createIndex() {
                             },
                         },
                     },
+                    index: {
+                        max_ngram_diff: 10,
+                    },
                 },
                 mappings: {
                     properties: {

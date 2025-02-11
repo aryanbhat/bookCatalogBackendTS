@@ -1,19 +1,25 @@
-import { Client } from "@elastic/elasticsearch";
+import {Client } from "@opensearch-project/opensearch";
 
-const elasticClient = new Client({
-  node: "http://localhost:9200",
+const openSearchClient = new Client({
+  node: "https://localhost:9200",
+  auth: {
+    username: "admin", 
+    password: "Lameloball@666"
+  },
+  ssl: {
+    rejectUnauthorized: false
+}
 });
 
-// Make the function exportable
 export const testConnection = async () => {
   try {
-    const info = await elasticClient.info();
-    console.log("Connected to Elasticsearch:", info.name);
+    const info = await openSearchClient.info();
+    console.log("Connected to openSearchClient:", info.body.name);
     return true;
   } catch (error) {
-    console.error("Elasticsearch connection error:", error);
+    console.error("openSearchClient connection error:", error);
     return false;
   }
 };
 
-export default elasticClient;
+export default openSearchClient;

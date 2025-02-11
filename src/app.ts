@@ -52,7 +52,7 @@ app.use(errorMiddleware);
 const initializeElasticsearch = async () => {
   const isConnected = await testConnection();
   if (!isConnected) {
-    console.error("Failed to connect to Elasticsearch");
+    console.error("Failed to connect to openSearchClient");
     process.exit(1);
   }
   // await createIndex();

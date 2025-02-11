@@ -1,7 +1,7 @@
-import elasticClient from "../db/db.js";
+import openSearchClient from "../db/db.js";
 
 export async function getGenres() {
-  const result = await elasticClient.search({
+  const result = await openSearchClient.search({
     index: "books",
     body: {
       size: 0,
@@ -13,7 +13,7 @@ export async function getGenres() {
     },
   });
 
-  const genresAgg = result.aggregations?.genres as {
+  const genresAgg = result.body.aggregations?.genres as {
     buckets: Array<{ key: string; doc_count: number }>;
   };
 
@@ -23,7 +23,7 @@ export async function getGenres() {
 }
 
 export async function getYears() {
-  const result = await elasticClient.search({
+  const result = await openSearchClient.search({
     index: "books",
     body: {
       size: 0,
@@ -39,7 +39,7 @@ export async function getYears() {
     },
   });
 
-  const yearsAgg = result.aggregations?.years as {
+  const yearsAgg = result.body.aggregations?.years as {
     buckets: Array<{ key: string; doc_count: number }>;
   };
 

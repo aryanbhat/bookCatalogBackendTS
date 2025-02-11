@@ -6,7 +6,6 @@ import { errorMiddleware } from "./middlewares/error.js";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import { testConnection } from "./db/db";
-import { test } from "./utils/test.js";
 dotenv.config({ path: "./.env" });
 export const envMode = process.env.NODE_ENV?.trim() || "DEVELOPMENT";
 const port = process.env.PORT || 3000;
@@ -38,7 +37,7 @@ const initializeElasticsearch = async () => {
     }
     // await createIndex();
     // await bulkUploader();
-    await test();
+    // await test();
 };
 initializeElasticsearch();
 app.listen(port, () => console.log("Server is working on Port:" + port + " in " + envMode + " Mode."));

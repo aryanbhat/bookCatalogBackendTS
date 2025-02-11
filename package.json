@@ -15,6 +15,7 @@
   "dependencies": {
     "@apollo/server": "4.11.3",
     "@elastic/elasticsearch": "^8.17.0",
+    "@opensearch-project/opensearch": "^3.2.0",
     "cors": "2.8.5",
     "debug": "^4.4.0",
     "dotenv": "16.4.7",

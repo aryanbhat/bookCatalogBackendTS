@@ -1,4 +1,4 @@
-import elasticClient from "../db/db.js";
+import openSearchClient from "../db/db.js";
 import { books } from "../json/archive.js";
 import { transformDate } from "./dateTransformer.js";
 
@@ -22,12 +22,12 @@ export async function bulkUploader() {
         price: Number(book.price),
       },
     ]);
-
+    
     try {
-      const response = await elasticClient.bulk({ body });
+      const response = await openSearchClient.bulk({ body });
 
-      if (response.errors) {
-        const failedItems = response.items.filter((item) => item.index?.error);
+      if (response) {
+        const failedItems = response.body.items.filter((item) => item.index?.error);
         errorCount += failedItems.length;
         successCount += chunk.length - failedItems.length;
 
