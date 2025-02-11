@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/app.js",
+  "scripts": {
+    "start": "node ./dist/app.js",
+    "build": "tsc",
+    "dev": "tsx watch src/app.ts"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "4.11.3",
+    "@elastic/elasticsearch": "^8.17.0",
+    "cors": "2.8.5",
+    "debug": "^4.4.0",
+    "dotenv": "16.4.7",
+    "express": "4.21.2",
+    "graphql": "16.10.0",
+    "morgan": "1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.17",
+    "@types/express": "4.17.21",
+    "@types/helmet": "4.0.0",
+    "@types/morgan": "1.9.9",
+    "@types/node": "22.10.7",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
+  }
+}

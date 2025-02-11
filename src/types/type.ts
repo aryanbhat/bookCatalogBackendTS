@@ -1,0 +1,20 @@
+export type Book = {
+  bookId: string;
+  title: string;
+  author: string[];
+  rating: number;
+  description: string;
+  language: string;
+  isbn: string;
+  genres: string[];
+  pages: string;
+  publisher: string;
+  publishDate: string;
+  awards: string;
+  numRatings: number;
+  ratingsByStars: number[];
+  likedPercent: number;
+  coverImg: string;
+  price: string;
+  score: number;
+};
