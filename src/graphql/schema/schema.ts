@@ -13,6 +13,10 @@ type SearchResult {
     pages: Int,
 }
 
+//this is the query which you can do Like i have two queries one is search and another is bookData 
+//and then there is parameters ye Query main hota hain ye sab query kar sakte ho app and then mutation hota jo kuch change karne ke lie karte hain 
+//to ye clone karo then npm i aur npm run dev karke jaha bhi jayega us se /grpahql pe jao aur dikhega aapko ki query kya hain kaise karunga sab kuch
+
 type Query {
     search(query: String, filters: Filters, from: Int, size: Int): SearchResult
     bookDetails(bookId: String): Book

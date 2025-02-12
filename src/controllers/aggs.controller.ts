@@ -1,4 +1,4 @@
-import elasticClient from "../db/db";
+import openSearchClient from "../db/db";
 import { Filters } from "./search.controller";
 
 export async function searchAggs(
@@ -58,7 +58,7 @@ export async function searchAggs(
       });
     }
 
-    const result = await elasticClient.search({
+    const result = await openSearchClient.search({
       index: "books",
       from,
       size: 0,
@@ -76,7 +76,7 @@ export async function searchAggs(
     });
 
     const years = (
-      result.aggregations?.years as {
+      result.body.aggregations?.years as {
         buckets: { key: number; doc_count: number }[];
       }
     )?.buckets.map((bucket) => {
